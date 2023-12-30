@@ -1,27 +1,9 @@
+package Aula1.Exercicios;
+
 import java.util.Scanner;
 
-public class Exercicios{
-    String qualExercicio;
-
-    public Exercicios(){
-    }
-
-    public Exercicios(String qualExercicio){
-        this.qualExercicio = qualExercicio;
-    }
-
-
-    public void executar(){
-        if(qualExercicio.equals("ex001")){
-            this.ex001();
-        }
-        else{
-            this.semExercicio();
-        }
-
-    }
-
-    public void ex001() {
+public class Ex01 {
+    public static void main(String[] args) {
         String retorno = "Erro";
         Scanner leitor = new Scanner(System.in);
         System.out.println("Digite a quantidade de livros: ");
@@ -35,9 +17,5 @@ public class Exercicios{
             else retorno = "Indiferente";
         }
         System.out.println(retorno);
-    }
-
-    public void semExercicio(){
-        System.out.println("Não tem esse exercicio nessa aula");
     }
 }

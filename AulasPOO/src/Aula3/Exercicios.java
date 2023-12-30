@@ -1,3 +1,5 @@
+package Aula3;
+
 public class Exercicios {
     int exercicioEscolhido;
 
