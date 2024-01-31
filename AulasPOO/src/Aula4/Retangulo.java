@@ -15,8 +15,11 @@ public class Retangulo extends Figura {
                 '}';
     }
 
-    public void retangulo(int x, int y, double l, double c){
-        System.out.println(area());
+    public Retangulo(){
+    }
+
+    public Retangulo(double l , double c){
+        this.largura = l; this.comprimento = c;
     }
 
 }

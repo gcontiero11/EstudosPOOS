@@ -8,6 +8,13 @@ public class Circulo extends Figura {
         return  2 * Math.PI * (raio * raio);
     }
 
+    public Circulo(){
+    }
+
+    public Circulo(int r){
+        this.raio = r;
+    }
+
     @Override
     public String toString() {
         return "Circulo{" +

@@ -7,25 +7,22 @@ public class Main {
         double somaDasAreas = 0;
         for (int i = 0 ; i < figuras.length ; i++){
             if (i<50){
-                Circulo circ = new Circulo();
-                circ.raio = i + 1;
+                int tamanho = i + 1;
+                Circulo circ = new Circulo(tamanho);
                 double areaCirculo = circ.area();
                 somaDasAreas += areaCirculo;
                 figuras[i] = circ;
             }
             else if (i<100) {
-                Retangulo retan = new Retangulo();
-                retan.largura = i - 49;
-                retan.comprimento = i - 49;
+                double tamanho = i - 49;
+                Retangulo retan = new Retangulo(tamanho, tamanho);
                 double areaRetangulo = retan.area();
                 somaDasAreas += areaRetangulo;
                 figuras[i] = retan;
             }
             else{
-                Triangulo tri = new Triangulo();
-                tri.l1 = i - 99;
-                tri.l2 = i - 99;
-                tri.l3 = i - 99;
+                double tamanho = i - 99;
+                Triangulo tri = new Triangulo(tamanho,tamanho,tamanho);
                 double areaTriangulo = tri.area();
                 somaDasAreas += areaTriangulo;
                 figuras[i] = tri;
@@ -37,6 +34,6 @@ public class Main {
             System.out.println("Figura numero: " + numeroDefiguras + " " + f.toString() + "\n");
             numeroDefiguras += 1;
         }
-        System.out.println(somaDasAreas);
+        System.out.println(String.format("%.3f",somaDasAreas).replace(",","."));
     }
 }
