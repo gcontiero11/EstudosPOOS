@@ -1,28 +1,27 @@
-package Aula4;
+package Aula4.Ex01;
 
-
-public class Main {
+class Main {
     public static void main(String[] args) {
         Figura[] figuras = new Figura[150];
         double somaDasAreas = 0;
         for (int i = 0 ; i < figuras.length ; i++){
             if (i<50){
                 int tamanho = i + 1;
-                Circulo circ = new Circulo(tamanho);
+                Figura circ = new Circulo(tamanho);
                 double areaCirculo = circ.area();
                 somaDasAreas += areaCirculo;
                 figuras[i] = circ;
             }
             else if (i<100) {
                 double tamanho = i - 49;
-                Retangulo retan = new Retangulo(tamanho, tamanho);
+                Figura retan = new Retangulo(tamanho, tamanho);
                 double areaRetangulo = retan.area();
                 somaDasAreas += areaRetangulo;
                 figuras[i] = retan;
             }
             else{
                 double tamanho = i - 99;
-                Triangulo tri = new Triangulo(tamanho,tamanho,tamanho);
+                Figura tri = new Triangulo(tamanho,tamanho,tamanho);
                 double areaTriangulo = tri.area();
                 somaDasAreas += areaTriangulo;
                 figuras[i] = tri;

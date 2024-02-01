@@ -1,6 +1,7 @@
-package Aula4;
+package Aula4.Ex01;
 
-public class Retangulo extends Figura {
+import Aula4.Ex01.Figura;
+class Retangulo extends Figura {
     protected double largura;
     protected double comprimento;
 

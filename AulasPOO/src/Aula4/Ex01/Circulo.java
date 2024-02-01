@@ -1,6 +1,6 @@
-package Aula4;
+package Aula4.Ex01;
 
-public class Circulo extends Figura {
+class Circulo extends Figura {
     protected double raio;
 
     @Override

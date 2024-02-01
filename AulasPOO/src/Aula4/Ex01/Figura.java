@@ -1,6 +1,6 @@
-package Aula4;
+package Aula4.Ex01;
 
-public abstract class Figura {
+abstract class Figura {
     private int x;
     private int y;
 

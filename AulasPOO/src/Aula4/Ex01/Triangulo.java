@@ -1,6 +1,8 @@
-package Aula4;
+package Aula4.Ex01;
 
-public class Triangulo extends Figura{
+import Aula4.Ex01.Figura;
+
+class Triangulo extends Figura {
     protected double l1;
     protected double l2;
     protected double l3;
