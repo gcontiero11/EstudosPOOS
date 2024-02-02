@@ -1,7 +1,5 @@
 package Aula5.Ex01;
 
-import java.awt.*;
-import java.util.Locale;
 
 public class Email {
     String email;
@@ -37,24 +35,21 @@ public class Email {
 
     private static boolean existeArroba(String email){
         for (char c : email.toCharArray()){
-            if (c == '@'){
-                return true;
-            }
+            if (c == '@') return true;
         }
         return false;
     }
     private static boolean validaDepoisDoArroba(String email){
-        int tamanhoEmail = email.length();
-        int indexArroba = email.indexOf("@");
-        String depoisDoArroba = email.substring(indexArroba,tamanhoEmail);
-        if (depoisDoArroba.equals("@gmail.com")) return true;
-        if (depoisDoArroba.equals("@gmail.com.br")) return true;
+        final int TAMANHO_EMAIL = email.length();
+        final int INDEX_ARROBA = email.indexOf("@");
+        final String DEPOIS_DO_ARROBA = email.substring(INDEX_ARROBA,TAMANHO_EMAIL);
+        if (DEPOIS_DO_ARROBA.equals("@gmail.com")) return true;
+        if (DEPOIS_DO_ARROBA.equals("@gmail.com.br")) return true;
         return false;
     }
     private static boolean validaAntesDoArroba(String email){
-        int tamanhoEmail = email.length();
-        int indexArroba = email.indexOf("@");
-        String antesDoArroba = email.substring(0,indexArroba) ;
+        final int INDEX_ARROBA = email.indexOf("@");
+        String antesDoArroba = email.substring(0,INDEX_ARROBA) ;
         if (! tamanhoCerto(antesDoArroba,4,30)){
             System.out.println("Tamanho esta errado");
             return false;
@@ -75,32 +70,13 @@ public class Email {
         return ! (tamanhoString < min || tamanhoString > max);
     }
     private static boolean possuiCaracteresEspeciais(String str){
+
+        final char[] CARACTERES_ESPECIAIS = {'?','@','#','$','%','^','&','*','(',')','+','=','<','>','!',';','-',',','`','~','{','}',' ','\\','\n'};
+
         for (char c : str.toCharArray()){
-            if (c == '?') return true;
-            if (c == '@') return true;
-            if (c == '#') return true;
-            if (c == '$') return true;
-            if (c == '%') return true;
-            if (c == '^') return true;
-            if (c == '&') return true;
-            if (c == '*') return true;
-            if (c == '(') return true;
-            if (c == ')') return true;
-            if (c == '+') return true;
-            if (c == '=') return true;
-            if (c == '>') return true;
-            if (c == '<') return true;
-            if (c == '!') return true;
-            if (c == '-') return true;
-            if (c == ';') return true;
-            if (c == ',') return true;
-            if (c == '`') return true;
-            if (c == '~') return true;
-            if (c == '{') return true;
-            if (c == '}') return true;
-            if (c == ' ') return true;
-            if (c == '\\') return true;
-            if (c == '\n') return true;
+            for (char especialChar : CARACTERES_ESPECIAIS){
+                if (c == especialChar) return true;
+            }
         }
         return false;
     }
