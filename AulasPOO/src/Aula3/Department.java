@@ -39,18 +39,43 @@ public class Department {
             staff = newStaff;
         }
         else{
-            System.out.println("Esta reuniao não está agendada");
+            System.out.println("Este funcionario n esta na staff");
         }
     }
     public void removeEmployee (long id){
-
+        Employee[] newStaff = new Employee[staff.length - 1];
+        boolean flag = false;
+        for (int i = 0; i<staff.length;i++){
+            if (staff[i].id == id){
+                staff[i].id = staff[staff.length - 1].id;
+                flag = true;
+            }
+        }
+        if (flag){
+            for (int i = 0; i<newStaff.length; i++){
+                newStaff[i] = staff[i];
+                i++;
+            }
+            staff = newStaff;
+        }
+        else{
+            System.out.println("Este funcionario n esta na staff");
+        }
     }
     public void listAllEmployees(){
+        for (Employee e : staff){
+            System.out.println(e.toString());
+        }
     }
     public int sizeOfEmployees(){
-        return -1;
+        System.out.println(staff.length);
     }
     public Employee getEmployee(long id){
+        for (Employee e : staff){
+            if (e.id == id){
+                return e;
+            }
+        }
         return null;
     }
 
