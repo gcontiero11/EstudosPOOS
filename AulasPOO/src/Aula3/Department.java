@@ -1,7 +1,5 @@
 package Aula3;
 
-import Aula5.Ex04.Meeting;
-
 public class Department {
     private String name;
     private int code;
@@ -68,7 +66,7 @@ public class Department {
         }
     }
     public int sizeOfEmployees(){
-        System.out.println(staff.length);
+        return staff.length;
     }
     public Employee getEmployee(long id){
         for (Employee e : staff){

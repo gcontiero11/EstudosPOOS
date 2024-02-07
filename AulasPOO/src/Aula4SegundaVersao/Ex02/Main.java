@@ -1,8 +1,5 @@
-package Aula5.Ex02;
+package Aula4SegundaVersao.Ex02;
 
-import com.sun.source.tree.WhileLoopTree;
-
-import javax.swing.plaf.synth.SynthTreeUI;
 import java.util.Locale;
 import java.util.Scanner;
 

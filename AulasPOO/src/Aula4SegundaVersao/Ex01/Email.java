@@ -1,4 +1,4 @@
-package Aula5.Ex01;
+package Aula4SegundaVersao.Ex01;
 
 
 public class Email {

@@ -1,4 +1,4 @@
-package Aula5.Ex03;
+package Aula4SegundaVersao.Ex03;
 
 public abstract class NamingConventions {
 
