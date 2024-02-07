@@ -21,7 +21,7 @@ public class PetShop{
     }
     public void listPessoas(){
         for (Map.Entry<String,Pessoa> pessoa : this.clientes.entrySet()){
-            System.out.println(pessoa);
+            System.out.println(pessoa.getValue().toString());
         }
     }
 //    public void listCachorros(String cpf){
