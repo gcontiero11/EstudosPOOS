@@ -17,6 +17,7 @@ public class Main {
                     break;
                 case 1:
                     System.out.println("Digite as informações da pessoa");
+                    leitor.nextLine();
                     System.out.println("Nome: ");
                     String nome = leitor.nextLine();
                     System.out.println("Cpf: ");
@@ -25,6 +26,7 @@ public class Main {
                     break;
                 case  2:
                     System.out.println("Digite o cpf do dono e as informações do Cachorro");
+                    leitor.nextLine();
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
                     System.out.println("Nome do Cachorro: ");
@@ -40,18 +42,21 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Digite o cpf do dono");
-                    leitor.nextInt();
+                    leitor.nextLine();
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
                     myPetshop.listCachorros(cpf);
+                    break;
                 case 5:
                     System.out.println("Digite o cpf de quem deseja remover");
+                    leitor.nextLine();
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
                     myPetshop.removePessoa(cpf);
                     break;
                 case 6:
                     System.out.println("digite o cpf do dono e o nome do cachorro que deseja remover");
+                    leitor.nextLine();
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
                     System.out.println("Nome do Cachorro: ");
