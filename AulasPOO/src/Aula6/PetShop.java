@@ -28,7 +28,7 @@ public class PetShop {
             System.out.println(pessoa.getValue().toString());
         }
     }
-    public void listCachorros(String cpf){
+    public void listCachorros(String cpf) throws NoDogsExeption{
         try {
             List<Cachorro> cachorrosDoCliente = this.clientes.get(cpf).cachorros;
             if (cachorrosDoCliente.isEmpty()) throw (new NoDogsExeption("Este cliente não possui cachorros cadastrados"));
@@ -36,8 +36,6 @@ public class PetShop {
             .forEach(cachorro -> System.out.println(cachorro.toString()));
         } catch (NullPointerException e) {
             System.out.println("não exite ninguem no sistema com este cpf");
-        }catch (NoDogsExeption e){
-           e.getStackTrace();
         }
     }
 

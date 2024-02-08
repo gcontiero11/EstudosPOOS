@@ -45,7 +45,11 @@ public class Main {
                     System.out.println("Digite o cpf do dono");
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
-                    myPetshop.listCachorros(cpf);
+                    try {
+                        myPetshop.listCachorros(cpf);
+                    }catch (NoDogsExeption e){;
+                        e.printStackTrace();
+                    }
                     break;
                 case 5:
                     System.out.println("Digite o cpf de quem deseja remover");
