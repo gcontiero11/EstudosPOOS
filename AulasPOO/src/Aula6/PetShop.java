@@ -29,8 +29,16 @@ public class PetShop {
         }
     }
     public void listCachorros(String cpf){
-        this.clientes.get(cpf).cachorros
-        .forEach(cachorro -> System.out.println(cachorro.toString()));
+        try {
+            List<Cachorro> cachorrosDoCliente = this.clientes.get(cpf).cachorros;
+            if (cachorrosDoCliente.isEmpty()) throw (new NoDogsExeption("Este cliente não possui cachorros cadastrados"));
+            cachorrosDoCliente
+            .forEach(cachorro -> System.out.println(cachorro.toString()));
+        } catch (NullPointerException e) {
+            System.out.println("não exite ninguem no sistema com este cpf");
+        }catch (NoDogsExeption e){
+           e.getStackTrace();
+        }
     }
 
     public void removePessoa(String cpf){

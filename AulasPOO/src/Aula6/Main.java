@@ -43,7 +43,6 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Digite o cpf do dono");
-                    leitor.nextLine();
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
                     myPetshop.listCachorros(cpf);
