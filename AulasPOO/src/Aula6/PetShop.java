@@ -28,10 +28,10 @@ public class PetShop {
             System.out.println(pessoa.getValue().toString());
         }
     }
-    public void listCachorros(String cpf) throws NoDogsExeption{
+    public void listCachorros(String cpf) throws EmptyStructure{
         try {
             List<Cachorro> cachorrosDoCliente = this.clientes.get(cpf).cachorros;
-            if (cachorrosDoCliente.isEmpty()) throw (new NoDogsExeption("Este cliente não possui cachorros cadastrados"));
+            if (cachorrosDoCliente.isEmpty()) throw (new EmptyStructure("Este cliente não possui cachorros cadastrados"));
             cachorrosDoCliente
             .forEach(cachorro -> System.out.println(cachorro.toString()));
         } catch (NullPointerException e) {
@@ -39,13 +39,22 @@ public class PetShop {
         }
     }
 
-    public void removePessoa(String cpf){
+    public void removePessoa(String cpf) throws CpfDoesntMetchException,EmptyStructure{
+        if (this.clientes.isEmpty()) {throw (new EmptyStructure("Não há pessoas cadastradas"));}
+        if (this.clientes.get(cpf) == null){throw (new CpfDoesntMetchException("cpf não existente em nosso registro"));}
+
         this.clientes.remove(cpf);
     }
 
-    public void removeCachorro(String cpf,String nomeCachorro){
-        List<Cachorro> cachorrosDoCliente = this.clientes.get(cpf).cachorros;
-        cachorrosDoCliente.stream().filter(cachorro -> cachorro.nome.equals(nomeCachorro)).forEach(dog -> cachorrosDoCliente.remove(dog));
+    public void removeCachorro(String cpf,String nomeCachorro) throws  CpfDoesntMetchException,EmptyStructure{
+        if (this.clientes.isEmpty()) {throw (new EmptyStructure("Não há pessoas cadastradas"));}
+        Pessoa cliente = this.clientes.get(cpf);
+        if (cliente == null) {throw (new CpfDoesntMetchException("cpf não existente em nosso registro"));}
+        this.clientes.get(cpf).cachorros.forEach(cachorro -> {
+            if (cachorro.nome.equals(nomeCachorro)) {
+                cliente.cachorros.remove(cachorro);
+            }
+        });
     }
 
     public void listVacinados(boolean vacina){

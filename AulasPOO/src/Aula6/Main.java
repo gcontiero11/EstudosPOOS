@@ -1,6 +1,5 @@
 package Aula6;
 
-import Aula6.PetShop;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -47,31 +46,38 @@ public class Main {
                     cpf = leitor.nextLine();
                     try {
                         myPetshop.listCachorros(cpf);
-                    }catch (NoDogsExeption e){;
+                    }catch (EmptyStructure e){
                         e.printStackTrace();
                     }
                     break;
                 case 5:
                     System.out.println("Digite o cpf de quem deseja remover");
-                    leitor.nextLine();
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
-                    myPetshop.removePessoa(cpf);
+                    try {
+                        myPetshop.removePessoa(cpf);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 6:
                     System.out.println("digite o cpf do dono e o nome do cachorro que deseja remover");
-                    leitor.nextLine();
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
                     System.out.println("Nome do Cachorro: ");
                     nomeCachorro = leitor.nextLine();
-                    myPetshop.removeCachorro(cpf,nomeCachorro);
+                    try {
+                        myPetshop.removeCachorro(cpf,nomeCachorro);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 7:
                     System.out.println("Deseja exibir os cachorros de um cliente especifico? Sim[1]/Não[2]");
                     System.out.println("Deseja listar os cachorros vacinados[1] ou os não vacinados[2]?");
+                    boolean clienteEspecifico = leitor.nextInt() == 1;
                     boolean exibirVacinados = leitor.nextInt() == 1;
-                    if (leitor.nextInt() == 1){
+                    if (clienteEspecifico){
                         System.out.println("Digite o nome do dono");
                         cpf = leitor.nextLine();
                         myPetshop.listVacinados(exibirVacinados,cpf);
