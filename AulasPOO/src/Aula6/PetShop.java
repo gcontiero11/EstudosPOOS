@@ -57,19 +57,22 @@ public class PetShop {
         });
     }
 
-    public void listVacinados(boolean vacina){
-        for (Map.Entry<String, Pessoa> pessoa : clientes.entrySet()){
+    public void listVacinados(boolean vacina) throws EmptyStructureException{
+        if (this.clientes.isEmpty()){throw new EmptyStructureException("Não há pessoas cadastradas");}
+        for (Map.Entry<String, Pessoa> pessoa : this.clientes.entrySet()){
+            if (pessoa.getValue().cachorros.isEmpty()){throw new EmptyStructureException("Este cliente não possui cachorros cadastrados");}
             pessoa.getValue()
             .cachorros.stream()
             .filter(cachorro ->cachorro.vacinado == vacina)
-            .forEach(dog -> System.out.println(dog.toString()));
+            .forEach(System.out::println);
         }
     }
 
-    public void listVacinados(boolean boolVacina , String cpf){
-        clientes.get(cpf).cachorros.stream()
-        .filter(cachorro -> cachorro.vacinado == boolVacina)
-        .forEach(cachorro ->  System.out.println(cachorro.toString()));
+    public void listVacinados(boolean vacinaBool , String cpf){
+        this.clientes.get(cpf).cachorros.stream()
+        .filter(cachorro -> cachorro.nome != null)
+        .filter(cachorro -> cachorro.vacinado == vacinaBool)
+        .forEach(System.out::println);
     }
 
 }
