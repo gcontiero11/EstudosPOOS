@@ -46,7 +46,7 @@ public class Main {
                     cpf = leitor.nextLine();
                     try {
                         myPetshop.listCachorros(cpf);
-                    }catch (EmptyStructure e){
+                    }catch (EmptyStructureException e){
                         e.printStackTrace();
                     }
                     break;

@@ -28,10 +28,10 @@ public class PetShop {
             System.out.println(pessoa.getValue().toString());
         }
     }
-    public void listCachorros(String cpf) throws EmptyStructure{
+    public void listCachorros(String cpf) throws EmptyStructureException{
         try {
             List<Cachorro> cachorrosDoCliente = this.clientes.get(cpf).cachorros;
-            if (cachorrosDoCliente.isEmpty()) throw (new EmptyStructure("Este cliente não possui cachorros cadastrados"));
+            if (cachorrosDoCliente.isEmpty()) throw (new EmptyStructureException("Este cliente não possui cachorros cadastrados"));
             cachorrosDoCliente
             .forEach(cachorro -> System.out.println(cachorro.toString()));
         } catch (NullPointerException e) {
@@ -39,15 +39,15 @@ public class PetShop {
         }
     }
 
-    public void removePessoa(String cpf) throws CpfDoesntMetchException,EmptyStructure{
-        if (this.clientes.isEmpty()) {throw (new EmptyStructure("Não há pessoas cadastradas"));}
+    public void removePessoa(String cpf) throws CpfDoesntMetchException,EmptyStructureException{
+        if (this.clientes.isEmpty()) {throw (new EmptyStructureException("Não há pessoas cadastradas"));}
         if (this.clientes.get(cpf) == null){throw (new CpfDoesntMetchException("cpf não existente em nosso registro"));}
 
         this.clientes.remove(cpf);
     }
 
-    public void removeCachorro(String cpf,String nomeCachorro) throws  CpfDoesntMetchException,EmptyStructure{
-        if (this.clientes.isEmpty()) {throw (new EmptyStructure("Não há pessoas cadastradas"));}
+    public void removeCachorro(String cpf,String nomeCachorro) throws  CpfDoesntMetchException,EmptyStructureException{
+        if (this.clientes.isEmpty()) {throw (new EmptyStructureException("Não há pessoas cadastradas"));}
         Pessoa cliente = this.clientes.get(cpf);
         if (cliente == null) {throw (new CpfDoesntMetchException("cpf não existente em nosso registro"));}
         this.clientes.get(cpf).cachorros.forEach(cachorro -> {
