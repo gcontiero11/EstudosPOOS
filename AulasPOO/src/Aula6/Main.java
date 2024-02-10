@@ -16,9 +16,8 @@ public class Main {
             try {
                 escolha = menu();
             } catch (InputMismatchException e) {
-                e.printStackTrace();
                 System.out.println("Valor invalido! Digite um numero dentre as opções");
-                escolha = menu();
+                continue;
             }
             switch (escolha){
                 case 0:
@@ -35,21 +34,34 @@ public class Main {
                     System.out.println("Digite o cpf do dono e as informações do Cachorro");
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
+
+                    try {
+                        myPetshop.verificaCpf(cpf);
+                    }catch (CpfDoesntMetchException e){
+                        System.out.println(e.getClass() + ": " + e.getMessage());
+                    }
+
                     System.out.println("Nome do Cachorro: ");
                     nomeCachorro = leitor.nextLine();
                     System.out.println("Raca do Cachorro: ");
                     String racaCachorro = leitor.nextLine();
-                    System.out.println("Cachorro é vacinado? Sim[1]/Nao[2]: ");
+                    System.out.println("Cachorro é vacinado? Sim[1]/Nao[!= de 1]: ");
+
                     try {
                         boolean vacinado = leitor.nextInt() == 1;
+                        leitor.nextLine();
                         myPetshop.addCachorro(cpf,nomeCachorro,racaCachorro,vacinado);
                     } catch (InputMismatchException e) {
-                        e.printStackTrace();
-                        System.out.println("Valor invalido! Digite um numero dentre as opções");
+                        System.out.println(e.getClass() + ": Valor invalido! Digite um numero dentre as opções");
                     }
+
                     break;
                 case 3:
-                    myPetshop.listPessoas();
+                    try {
+                        myPetshop.listPessoas();
+                    } catch (EmptyStructureException e) {
+                        System.out.println(e.getClass() + ": " + e.getMessage());
+                    }
                     break;
                 case 4:
                     System.out.println("Deseja exibir os cachorros de um cliente especifico? Sim[1]/Não[2]");
@@ -59,8 +71,8 @@ public class Main {
                     try {
                         clienteEspecifico = leitor.nextInt() == 1;
                         exibirVacinados = leitor.nextInt() == 1;
-                    } catch (Exception e) {
-                        System.out.println(e + ": Valor invalido! Digite um numero dentre as opções");
+                    } catch (InputMismatchException e) {
+                        System.out.println(e.getClass() + ": Valor invalido! Digite um numero dentre as opções");
                         break;
                     }
                     if (clienteEspecifico){
@@ -71,14 +83,14 @@ public class Main {
                         try {
                             myPetshop.listVacinados(exibirVacinados,cpf);
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            System.out.println(e.getClass() + ": " + e.getMessage());
                         }
                     }
                     else{
                         try {
                             myPetshop.listVacinados(exibirVacinados);
                         } catch (EmptyStructureException e) {
-                            e.printStackTrace();
+                            System.out.println(e.getClass() + ": " + e.getMessage());
                         }
                     }
                     break;
@@ -87,9 +99,10 @@ public class Main {
                     System.out.println("Cpf: ");
                     cpf = leitor.nextLine();
                     try {
+                        myPetshop.verificaCpf(cpf);
                         myPetshop.listCachorros(cpf);
-                    }catch (EmptyStructureException e){
-                        e.printStackTrace();
+                    }catch (Exception e){
+                        System.out.println(e.getClass() + ": " + e.getMessage());
                     }
                     break;
                 case 6:
@@ -99,7 +112,7 @@ public class Main {
                     try {
                         myPetshop.removePessoa(cpf);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        System.out.println(e.getClass() + ": " + e.getMessage());
                     }
                     break;
                 case 7:
@@ -111,11 +124,11 @@ public class Main {
                     try {
                         myPetshop.removeCachorro(cpf,nomeCachorro);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        System.out.println(e.getClass() + ": " + e.getMessage());
                     }
                     break;
                 default:
-                    System.out.println("Resposta invalida , tente digitar um numero dentre as opções");
+                    System.out.println("Resposta invalida, digite um numero dentre as opções");
                     break;
             }
         }
@@ -134,4 +147,6 @@ public class Main {
         System.out.println("Sair.............[0]");
         return leitor.nextInt();
     }
+
+
 }

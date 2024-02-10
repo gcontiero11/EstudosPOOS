@@ -1,7 +1,5 @@
 package Aula6;
 
-import Aula6.Cachorro;
-
 import java.util.ArrayList;
 import java.util.List;
 
