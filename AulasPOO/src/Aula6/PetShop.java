@@ -37,13 +37,16 @@ public class PetShop{
     }
 
     public void removePessoa(String cpf) throws CpfDoesntMetchException,EmptyStructureException{
+
         if (this.clientes.isEmpty()) {throw (new EmptyStructureException("Não há pessoas cadastradas"));}
         if (this.clientes.get(cpf) == null){throw (new CpfDoesntMetchException("cpf não existente em nosso registro"));}
+
         this.clientes.remove(cpf);
     }
 
     public void removeCachorro(String cpf,String nomeCachorro) throws EmptyStructureException{
         if (this.clientes.isEmpty()) {throw (new EmptyStructureException("Não há pessoas cadastradas"));}
+
         Optional<Pessoa> clienteOpt = Optional.ofNullable(this.clientes.get(cpf));
         clienteOpt.orElseThrow(NullPointerException::new);
         clienteOpt.ifPresent(client -> {
