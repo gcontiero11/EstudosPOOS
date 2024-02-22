@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PetShop{
     Map<String, Pessoa> clientes;
@@ -69,10 +70,11 @@ public class PetShop{
         if (this.clientes.isEmpty()){throw new EmptyStructureException("Não há pessoas cadastradas");}
         for (Map.Entry<String, Pessoa> pessoa : this.clientes.entrySet()){
             if (pessoa.getValue().cachorros.isEmpty()){throw new EmptyStructureException("Este cliente não possui cachorros cadastrados");}
-            pessoa.getValue()
+            List<Cachorro> cachorrosSelecionados = pessoa.getValue()
             .cachorros.stream()
-            .filter(cachorro ->cachorro.vacinado == vacina)
-            .forEach(System.out::println);
+            .filter(cachorro ->cachorro.vacinado == vacina).collect(Collectors.toList());
+
+            cachorrosSelecionados.forEach(System.out::println);;
         }
     }
 
