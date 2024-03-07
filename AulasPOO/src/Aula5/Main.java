@@ -1,7 +1,6 @@
 package Aula5;
 
-import com.sun.source.tree.WhileLoopTree;
-
+import java.lang.String;
 import java.util.Locale;
 import java.util.Scanner;
 
